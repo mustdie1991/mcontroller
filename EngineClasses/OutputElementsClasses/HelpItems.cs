@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using EngineClasses.CoreClasses;
 
@@ -88,7 +85,7 @@ namespace EngineClasses.OutputElementsClasses
         public double avd;
         public DependencyPoint(double value, double pO2min, double pO2a, double pO2v, double pO2t, double cy, double avd)
         {
-            this.PointValue = value;
+            PointValue = value;
             this.pO2min = pO2min;
             this.pO2a = pO2a;
             this.pO2v = pO2v;
@@ -117,7 +114,7 @@ namespace EngineClasses.OutputElementsClasses
         public bool Enabled;
         public void SetEnabled(bool enabledState)
         {
-            this.Enabled = enabledState;
+            Enabled = enabledState;
         }
         public MParametersList(string Name, List<BaseModelParameters> list, bool Enabled = true)
         {

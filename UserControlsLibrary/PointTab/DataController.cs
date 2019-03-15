@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UserControlsLibrary.PointTab.Histograms;
 using UserControlsLibrary.PointTab.GraphicConrtols;
 using UserControlsLibrary.PointTab.MatrixControls;

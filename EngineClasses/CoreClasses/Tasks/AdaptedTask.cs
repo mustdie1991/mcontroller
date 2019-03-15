@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using EngineClasses.CoreClasses;
 
 namespace EngineClasses.CoreClasses.Tasks
 {
-    sealed public class AdaptingTask : Tasking
+    public sealed class AdaptingTask : Tasking
     {
         protected override void Initials()
         {
@@ -40,9 +36,9 @@ namespace EngineClasses.CoreClasses.Tasks
                 u_h = new double[mElement.Size + 1, mElement.Size + 1, mElement.Layers + 1];
                 no = new double[mElement.Size + 1, mElement.Size + 1, mElement.Layers + 1];
                 a_qO2 = new double[mElement.Size + 1, mElement.Size + 1, mElement.Layers + 1];
-                for (int i = 0; i < mElement.Size; i++)
-                    for (int j = 0; j < mElement.Size; j++)
-                        for (int k = 0; k < mElement.Layers; k++)
+                for (var i = 0; i < mElement.Size; i++)
+                    for (var j = 0; j < mElement.Size; j++)
+                        for (var k = 0; k < mElement.Layers; k++)
                         {
                             u_h[i, j, k] = mElement.u_h[i, j, k];
                             no[i, j, k] = mElement.no[i, j, k];
@@ -54,8 +50,8 @@ namespace EngineClasses.CoreClasses.Tasks
         {
             base.CountGeneralValues();
             double sum = 0;
-            int counter = 0;
-            foreach (double d in a_qO2)
+            var counter = 0;
+            foreach (var d in a_qO2)
             {
                 if (d > 0)
                 {

@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using EngineClasses.OutputElementsClasses;
 
@@ -21,7 +16,7 @@ namespace UserControlsLibrary
             InitializeComponent();
             checkedListBox1.Items.AddRange((string[])Enum.GetNames(typeof(TaskType)));
             SavedBlocks = new bool[3];
-            for(int i = 0; i < checkedListBox1.Items.Count; i++)
+            for(var i = 0; i < checkedListBox1.Items.Count; i++)
             {
                 checkedListBox1.SetItemChecked(i, true);
                 SavedBlocks[i] = true;
@@ -52,12 +47,12 @@ namespace UserControlsLibrary
         {
             TextOut = textBox_name.Text;
             ExitedOnOK = true;
-            this.Close();
+            Close();
         }
 
         private void button_Cancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using EngineClasses.Interfaces;
-using UserControlsLibrary;
 using System.Drawing;
 using System.Windows.Forms;
 using EngineClasses.OutputElementsClasses;
 using EngineClasses.CoreClasses;
-using System.Drawing.Imaging;
 
 namespace UserControlsLibrary.PointTab.MatrixControls
 {
@@ -21,9 +16,9 @@ namespace UserControlsLibrary.PointTab.MatrixControls
         {
         }
 
-        private System.Windows.Forms.DataGridView ConvertToGrid()
+        private DataGridView ConvertToGrid()
         {
-            return (System.Windows.Forms.DataGridView)CustomDataGrid;
+            return (DataGridView)CustomDataGrid;
         }
 
         private static Color SelectColor(FillColourType mFill, double value)
@@ -52,19 +47,19 @@ namespace UserControlsLibrary.PointTab.MatrixControls
         {
             if (CustomDataGrid != null)
             {
-                ((System.Windows.Forms.DataGridView)CustomDataGrid).Rows.Clear();
-                ((System.Windows.Forms.DataGridView)CustomDataGrid).Columns.Clear();
-                System.Windows.Forms.DataGridView dataGrid = ConvertToGrid();
+                ((DataGridView)CustomDataGrid).Rows.Clear();
+                ((DataGridView)CustomDataGrid).Columns.Clear();
+                var dataGrid = ConvertToGrid();
                 dataGrid.RowCount = verticalCells;
                 dataGrid.ColumnCount = horizontalCells;
                 double tempSize = dataGrid.Height / verticalCells;
-                double resizing = tempSize - (int)tempSize;
+                var resizing = tempSize - (int)tempSize;
                 double resizingCounter = 0;
                 if (verticalCells > 40)
                     dataGrid.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
                 else
                 {
-                    foreach (System.Windows.Forms.DataGridViewRow dgw in dataGrid.Rows)
+                    foreach (DataGridViewRow dgw in dataGrid.Rows)
                     {
                         dgw.Height = dataGrid.Height / verticalCells;
                         resizingCounter += resizing;
@@ -84,9 +79,9 @@ namespace UserControlsLibrary.PointTab.MatrixControls
             {
                 mData = (MatrixData)data;
                 Resize(mData.horizontalCells, mData.verticalCells);
-                System.Windows.Forms.DataGridView dataGrid = ConvertToGrid();
-                for (int i = 0; i < mData.horizontalCells; i++)
-                    for (int j = 0; j < mData.verticalCells; j++)
+                var dataGrid = ConvertToGrid();
+                for (var i = 0; i < mData.horizontalCells; i++)
+                    for (var j = 0; j < mData.verticalCells; j++)
                     {
                         dataGrid[i, j].Value = mData.matrix[i, j].ToString("N4");
                         dataGrid[i, j].Style.BackColor = SelectColor(mData.mColor, mData.matrix[i, j]);
@@ -95,16 +90,16 @@ namespace UserControlsLibrary.PointTab.MatrixControls
         }
         public void SetComponent(object component)
         {
-            if (component is System.Windows.Forms.DataGridView)
+            if (component is DataGridView)
                 CustomDataGrid = component;
         }
         public Bitmap DrawToBitmap(BaseModelParameters parametersToDraw)
         {
-            DataGridView MyGrid = (DataGridView)CustomDataGrid;
-            Bitmap bmp = new Bitmap(MyGrid.Width, MyGrid.Height + 50);
-            Bitmap bmpDataGrid = new Bitmap(MyGrid.Width, MyGrid.Height);
+            var MyGrid = (DataGridView)CustomDataGrid;
+            var bmp = new Bitmap(MyGrid.Width, MyGrid.Height + 50);
+            var bmpDataGrid = new Bitmap(MyGrid.Width, MyGrid.Height);
             MyGrid.DrawToBitmap(bmpDataGrid, new Rectangle(0, 0, MyGrid.Width, MyGrid.Height));
-            Graphics g = Graphics.FromImage(bmp);
+            var g = Graphics.FromImage(bmp);
             g.DrawString(parametersToDraw.ToString(), new Font("Arial", 10), new SolidBrush(Color.Red), new PointF(0.0f, 0.0f));
             g.DrawImage(bmpDataGrid, 0.0f, 50.0f);
             return bmp;

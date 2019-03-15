@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using EngineClasses.OutputElementsClasses;
-using EngineClasses.CoreClasses;
 
 namespace UserControlsLibrary
 {
     public static class LocalDataBase
     {
-        static private List<LocalDataGraphicsElement> graphicElements;
-        static private List<MParametersList> SavedModelBlocks;
+        private static List<LocalDataGraphicsElement> graphicElements;
+        private static List<MParametersList> SavedModelBlocks;
 
         public static event EventHandler<EventArgs> OnUpdateBlocks;
         public static event EventHandler<EventArgs> OnUpdateGraphics;
@@ -38,16 +35,16 @@ namespace UserControlsLibrary
             return SavedModelBlocks.Find(x => x.Name == name);
         }
 
-        static public LocalDataGraphicsElement GetElement(string name, BitmapType type)
+        public static LocalDataGraphicsElement GetElement(string name, BitmapType type)
         {
             return graphicElements.Find(x => x.Name == name && x.eType == type);
         }
-        static public object GetTypedElements(BitmapType type)
+        public static object GetTypedElements(BitmapType type)
         {
             return graphicElements.FindAll(x => x.eType == type);
         }
 
-        static public void AddData(object item)
+        public static void AddData(object item)
         {
             if (item is LocalDataGraphicsElement)
             {
@@ -60,7 +57,7 @@ namespace UserControlsLibrary
                 //OnUpdateGraphics(null, new EventArgs());
             }
         }
-        static public void DeleteItem()
+        public static void DeleteItem()
         {
         }
         static LocalDataBase()

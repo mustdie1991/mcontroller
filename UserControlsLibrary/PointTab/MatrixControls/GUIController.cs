@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UserControlsLibrary;
 using EventClasses.UserEventArgs;
 using EngineClasses.OutputElementsClasses;
 using EngineClasses.CoreClasses.Tasks;
 using EngineClasses.CoreClasses;
 using System.Drawing;
-using EventClasses.UserEventArgs;
 
 namespace UserControlsLibrary.PointTab.MatrixControls
 {
@@ -30,14 +25,14 @@ namespace UserControlsLibrary.PointTab.MatrixControls
         }
         public void SaveResultsToBitmap(object sender, UserEventArgs<BaseModelParameters> e)
         {
-            Bitmap bmp = MatrixAdapter.instance.DrawToBitmap(e.item);
-            BitmapType type = BitmapType.Матрица;
-            AskBlockNameDialog nameDialog = new AskBlockNameDialog();
+            var bmp = MatrixAdapter.instance.DrawToBitmap(e.item);
+            var type = BitmapType.Матрица;
+            var nameDialog = new AskBlockNameDialog();
             nameDialog.bmpType = type;
             nameDialog.ShowDialog();
             if (nameDialog.OKExited && nameDialog.OutText != null)
             {
-                LocalDataGraphicsElement element = new LocalDataGraphicsElement(nameDialog.OutText, bmp, type);
+                var element = new LocalDataGraphicsElement(nameDialog.OutText, bmp, type);
                 LocalDataBase.AddData(element);
                 System.Windows.Forms.MessageBox.Show("Данные успешно внесены!");
             }

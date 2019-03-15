@@ -42,13 +42,6 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.zedGraph_histograms.Location = new System.Drawing.Point(185, 102);
             this.zedGraph_histograms.Name = "zedGraph_histograms";
-            this.zedGraph_histograms.ScrollGrace = 0D;
-            this.zedGraph_histograms.ScrollMaxX = 0D;
-            this.zedGraph_histograms.ScrollMaxY = 0D;
-            this.zedGraph_histograms.ScrollMaxY2 = 0D;
-            this.zedGraph_histograms.ScrollMinX = 0D;
-            this.zedGraph_histograms.ScrollMinY = 0D;
-            this.zedGraph_histograms.ScrollMinY2 = 0D;
             this.zedGraph_histograms.Size = new System.Drawing.Size(416, 542);
             this.zedGraph_histograms.TabIndex = 15;
             // 

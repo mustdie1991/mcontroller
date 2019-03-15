@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EngineClasses.CoreClasses.Tasks
 {
-    sealed public class RegulatingTask : Tasking
+    public sealed class RegulatingTask : Tasking
     {
         protected override void CountGeneralValues()
         {
             base.CountGeneralValues();
             double sum = 0;
-            int counter = 0;
-            foreach (double d in a_qO2)
+            var counter = 0;
+            foreach (var d in a_qO2)
             {
                 if (d > 0)
                 {
@@ -54,9 +51,9 @@ namespace EngineClasses.CoreClasses.Tasks
                 u_h = new double[mElement.Size + 1, mElement.Size + 1, mElement.Layers + 1];
                 no = new double[mElement.Size + 1, mElement.Size + 1, mElement.Layers + 1];
                 a_qO2 = new double[mElement.Size + 1, mElement.Size + 1, mElement.Layers + 1];
-                for (int i = 0; i < mElement.Size + 1; i++)
-                    for (int j = 0; j < mElement.Size + 1; j++)
-                        for (int k = 0; k < mElement.Layers + 1; k++)
+                for (var i = 0; i < mElement.Size + 1; i++)
+                    for (var j = 0; j < mElement.Size + 1; j++)
+                        for (var k = 0; k < mElement.Layers + 1; k++)
                         {
                             u_h[i, j, k] = mElement.u_h[i, j, k];
                             no[i, j, k] = mElement.no[i, j, k];

@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using EngineClasses.CoreClasses.Tasks;
 using EventClasses.UserEventArgs;
@@ -19,7 +13,7 @@ namespace UserControlsLibrary.PointTab
         public OutputTabControl()
         {
             InitializeComponent();
-            dc = new OutputsDataController(this.mainMatrixControl1, this.mainGraphControl2, this.mainHistogramControl1);
+            dc = new OutputsDataController(mainMatrixControl1, mainGraphControl2, mainHistogramControl1);
             dc.saveRequested += RoutedSaveData;
         }
         public void SetData(MElementsBlock element)

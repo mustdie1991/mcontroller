@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using EngineClasses.OutputElementsClasses;
 using EventClasses.UserEventArgs;
@@ -39,7 +34,7 @@ namespace UserControlsLibrary.PointTab.GraphicConrtols
         public void ResetCurvelist(List<GraphItem> gItem)
         {
             checkedListBox1.Items.Clear();
-            foreach (GraphItem item in gItem)
+            foreach (var item in gItem)
             {
                 checkedListBox1.Items.Add(item.Name);
                 checkedListBox1.SetItemChecked(checkedListBox1.Items.Count - 1, item.enabled);
@@ -55,7 +50,7 @@ namespace UserControlsLibrary.PointTab.GraphicConrtols
 
         private void button_cleadAll_Click(object sender, EventArgs e)
         {
-            DialogResult dlg = MessageBox.Show("Действительно очистить все данные графиков?", "Очистка графиков", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var dlg = MessageBox.Show("Действительно очистить все данные графиков?", "Очистка графиков", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dlg == DialogResult.Yes)
             {
                 checkedListBox1.Items.Clear();
@@ -65,7 +60,7 @@ namespace UserControlsLibrary.PointTab.GraphicConrtols
 
         private void button_save_Click(object sender, EventArgs e)
         {
-            DialogResult dlg = MessageBox.Show("Сохранить графики?", "Сохранение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var dlg = MessageBox.Show("Сохранить графики?", "Сохранение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dlg == DialogResult.Yes)
             {
                 SaveAllCurves(this, new EventArgs());

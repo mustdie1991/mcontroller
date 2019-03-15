@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ZedGraph;
 using EngineClasses.Interfaces;
 using EngineClasses.OutputElementsClasses;
-using System.Drawing.Imaging;
 using System.Drawing;
 
 namespace UserControlsLibrary.PointTab.GraphicConrtols
@@ -45,7 +41,7 @@ namespace UserControlsLibrary.PointTab.GraphicConrtols
             {
                 ZedGraphControl zcontrol = (ZedGraphControl)graphicsGrid;
                 zcontrol.GraphPane.CurveList.Clear();
-                foreach (GraphItem gItem in items)
+                foreach (var gItem in items)
                     DrawSingleCurve(gItem);
             }
             else if (items == null || items.Count == 0)

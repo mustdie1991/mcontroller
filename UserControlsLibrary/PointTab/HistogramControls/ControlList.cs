@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using EngineClasses.OutputElementsClasses;
 using EventClasses.UserEventArgs;
@@ -37,7 +32,7 @@ namespace UserControlsLibrary.PointTab.Histograms
         public void ResetHistlist(List<HistogramData> hItem)
         {
             checkedListBox1.Items.Clear();
-            foreach (HistogramData item in hItem)
+            foreach (var item in hItem)
             {
                 checkedListBox1.Items.Add(item.name);
                 checkedListBox1.SetItemChecked(checkedListBox1.Items.Count - 1, item.Enabled);
@@ -46,7 +41,7 @@ namespace UserControlsLibrary.PointTab.Histograms
         public void ReloadHistlist(List<HistogramData> hItems)
         {
             checkedListBox1.Items.Clear();
-            foreach (HistogramData item in hItems)
+            foreach (var item in hItems)
             {
                 checkedListBox1.Items.Add(item.name);
                 checkedListBox1.SetItemChecked(checkedListBox1.Items.Count - 1, item.Enabled);
@@ -55,7 +50,7 @@ namespace UserControlsLibrary.PointTab.Histograms
 
         private void button_cleadAll_Click(object sender, EventArgs e)
         {
-            DialogResult dlg = MessageBox.Show("Действительно очистить все данные графиков?", "Очистка графиков", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var dlg = MessageBox.Show("Действительно очистить все данные графиков?", "Очистка графиков", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dlg == DialogResult.Yes)
             {
                 checkedListBox1.Items.Clear();

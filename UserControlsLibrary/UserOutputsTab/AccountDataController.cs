@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace UserControlsLibrary.UserOutputsTab
+﻿namespace UserControlsLibrary.UserOutputsTab
 {
     public class AccountDataController
     {

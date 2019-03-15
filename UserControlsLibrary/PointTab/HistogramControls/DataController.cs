@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using UserControlsLibrary;
-using ZedGraph;
-using UserControlsLibrary.PointTab.Histograms;
 using EngineClasses.OutputElementsClasses;
 using EventClasses.UserEventArgs;
 using EngineClasses.CoreClasses.Tasks;
@@ -47,17 +43,17 @@ namespace UserControlsLibrary.PointTab.Histograms
         }
         private void DisableHistogram(object sender, MessageEventArgs e)
         {
-            HistogramDataGrid hGrid = (HistogramDataGrid)GridResultsDisplay;
+            var hGrid = (HistogramDataGrid)GridResultsDisplay;
             hDataModel.DisableItem(e.message, outsType);
-            List<HistogramData> hItems = (List<HistogramData>)hDataModel.GetEnabledItems(outsType);
+            var hItems = (List<HistogramData>)hDataModel.GetEnabledItems(outsType);
             hGrid.FillComboHists(hItems.Select(x => x.name).ToArray<string>());
             HistogramAdapter.instance.Fill(hItems);
         }
         private void EnableHistogram(object sender, MessageEventArgs e)
         {
-            HistogramDataGrid hGrid = (HistogramDataGrid)GridResultsDisplay;
+            var hGrid = (HistogramDataGrid)GridResultsDisplay;
             hDataModel.EnableItem(e.message, outsType);
-            List<HistogramData> hItems = (List<HistogramData>)hDataModel.GetEnabledItems(outsType);
+            var hItems = (List<HistogramData>)hDataModel.GetEnabledItems(outsType);
             hGrid.FillComboHists(hItems.Select(x => x.name).ToArray<string>());
             HistogramAdapter.instance.Fill(hItems);
         }
@@ -68,17 +64,17 @@ namespace UserControlsLibrary.PointTab.Histograms
         private void ClearAllHistograms(object sender, EventArgs e)
         {
             hDataModel.ClearAllItems();
-            HistogramDataGrid hGrid = (HistogramDataGrid)GridResultsDisplay;
+            var hGrid = (HistogramDataGrid)GridResultsDisplay;
             hGrid.ClearAllData();
             HistogramAdapter.instance.ClearAll();
         }
         private void ChangeHistogramType(object sender, TypeEventArgs e)
         {
             outsType = e.type;
-            List<HistogramData> hItems = (List<HistogramData>)hDataModel.GetTypedItems(outsType);
-            HistogramList hl = (HistogramList)HistogramDisplayController;
-            HistogramDataGrid hGrid = (HistogramDataGrid)GridResultsDisplay;
-            List<HistogramData> hToDraw = hItems.FindAll((x) => x.Enabled == true);
+            var hItems = (List<HistogramData>)hDataModel.GetTypedItems(outsType);
+            var hl = (HistogramList)HistogramDisplayController;
+            var hGrid = (HistogramDataGrid)GridResultsDisplay;
+            var hToDraw = hItems.FindAll((x) => x.Enabled == true);
             hGrid.FillComboHists(hToDraw.Select(x => x.name).ToArray<string>());
             hl.ReloadHistlist(hItems);
             HistogramAdapter.instance.SetTitle(outsType);
@@ -87,30 +83,30 @@ namespace UserControlsLibrary.PointTab.Histograms
         }
         private void BuildHistogram(object sender, UserEventArgs<HistogramData> e)
         {
-            HistogramList hl = (HistogramList)HistogramDisplayController;
+            var hl = (HistogramList)HistogramDisplayController;
             if (hl.AddHistToList(e.item.name))
             {
                 hDataModel.AddItem(e.item);
-                HistogramDataGrid hGrid = (HistogramDataGrid)GridResultsDisplay;
+                var hGrid = (HistogramDataGrid)GridResultsDisplay;
                 hGrid.AddSingleComboitem(e.item.name);
                 HistogramAdapter.instance.Fill(e.item);
             }
         }
         private void ChangeHistogram(object sender, MessageEventArgs e)
         {
-            HistogramDataGrid hGrid = (HistogramDataGrid)GridResultsDisplay;
+            var hGrid = (HistogramDataGrid)GridResultsDisplay;
             hGrid.FillDataGrid(Converters.ConvertToHDataGridItems((HistogramData)hDataModel.GetTypedItem(e.message, outsType)));
         }
         private void SaveHistogram(object sender, EventArgs e)
         {
-            Bitmap bmp = HistogramAdapter.instance.DrawToBitmap();
-            BitmapType type = BitmapType.Гистограмма;
-            AskBlockNameDialog nameDialog = new AskBlockNameDialog();
+            var bmp = HistogramAdapter.instance.DrawToBitmap();
+            var type = BitmapType.Гистограмма;
+            var nameDialog = new AskBlockNameDialog();
             nameDialog.bmpType = type;
             nameDialog.ShowDialog();
             if (nameDialog.OKExited && nameDialog.OutText != null)
             {
-                LocalDataGraphicsElement element = new LocalDataGraphicsElement(nameDialog.OutText, bmp, type);
+                var element = new LocalDataGraphicsElement(nameDialog.OutText, bmp, type);
                 LocalDataBase.AddData(element);
                 System.Windows.Forms.MessageBox.Show("Данные успешно внесены!");
             }

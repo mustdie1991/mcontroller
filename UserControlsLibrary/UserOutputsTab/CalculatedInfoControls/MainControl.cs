@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace UserControlsLibrary.UserOutputsTab.CalculatedInfoControls
 {
@@ -15,7 +8,7 @@ namespace UserControlsLibrary.UserOutputsTab.CalculatedInfoControls
         public SavedBlocksControlMenu()
         {
             InitializeComponent();
-            dc = new CalculatedInfoDataController(this.blocksControlMenu2, this.dataGridView1);
+            dc = new CalculatedInfoDataController(blocksControlMenu2, dataGridView1);
         }
     }
 }

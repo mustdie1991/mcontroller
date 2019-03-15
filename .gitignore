@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/EngineClasses/bin/Release
+/EngineClasses/obj/Debug
+/EngineClasses/obj/Release
+/MuscleController/obj/x86/Debug
+/MuscleController/obj/x86/Release
+/packages/ZedGraph.5.1.7
+/Testing/obj/x86
+/UserControlsLibrary/obj
+/.vs

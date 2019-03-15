@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
-using ZedGraph;
 using EngineClasses.OutputElementsClasses;
-using EngineClasses.CoreClasses;
 
 namespace EventClasses.UserEventArgs
 {
@@ -26,7 +20,7 @@ namespace EventClasses.UserEventArgs
         public ListCheckedEventArgs(string message, bool state)
         {
             this.message = message;
-            this.checkState = state;
+            checkState = state;
         }
     }
     public class TypeEventArgs : EventArgs

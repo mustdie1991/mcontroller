@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using EventClasses.UserEventArgs;
 using EngineClasses.OutputElementsClasses;
@@ -35,7 +33,7 @@ namespace UserControlsLibrary.UserOutputsTab.GraphicInfoControls
         {
             ((PictureBox)ImageController).Image = null;
             currentOutputType = e.item;
-            List<LocalDataGraphicsElement> elements = (List<LocalDataGraphicsElement>)LocalDataBase.GetTypedElements(currentOutputType);
+            var elements = (List<LocalDataGraphicsElement>)LocalDataBase.GetTypedElements(currentOutputType);
             if (elements != null)
                 ((GraphicsInfoControlMenu)ListController).SetListBoxItems(elements);
         }

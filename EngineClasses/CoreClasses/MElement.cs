@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EngineClasses.CoreClasses
 {
@@ -48,12 +45,9 @@ namespace EngineClasses.CoreClasses
         }
         public override string ToString()
         {
-            return string.Format("[c9 = {0}, km = {1}, dd = {2}, k2 = {3}, ll = {4}, mrr = {5}, ke = {6}]" +
-                "\n[Size = {7} Layers = {8} Iterations = {9}]" +
-                "\n[VO2c = {10:0.000}, Cv = {11:0.000}, pO2a = {12:0.000}, pO2v = {13:0.000}, pO2t = {14:0.000}. pO2min = {15:0.000}, avd ={16:0.000}, cy = {17:0.000}]", 
-                c9, km, dd, k2, ll, mrr, ke, 
-                Size, Layers, ICount,
-                VO2c, Cv, pO2a, pO2v, pO2t, pO2min, avd, cy);
+            return $"[c9 = {c9}, km = {km}, dd = {dd}, k2 = {k2}, ll = {ll}, mrr = {mrr}, ke = {ke}]" +
+                   $"\n[Size = {Size} Layers = {Layers} Iterations = {ICount}]" +
+                   $"\n[VO2c = {VO2c:0.000}, Cv = {Cv:0.000}, pO2a = {pO2a:0.000}, pO2v = {pO2v:0.000}, pO2t = {pO2t:0.000}. pO2min = {pO2min:0.000}, avd ={avd:0.000}, cy = {cy:0.000}]";
         }
     }
 
@@ -90,29 +84,29 @@ namespace EngineClasses.CoreClasses
         }
         public void CopyOutputs(ModelElement element)
         {
-            double[, ,] tUH = new double[Size + 1, Size + 1, Layers + 1];
-            double[, ,] tNO = new double[Size + 1, Size + 1, Layers + 1];
-            double[, ,] tqO2 = new double[Size + 1, Size + 1, Layers + 1];
+            var tUH = new double[Size + 1, Size + 1, Layers + 1];
+            var tNO = new double[Size + 1, Size + 1, Layers + 1];
+            var tqO2 = new double[Size + 1, Size + 1, Layers + 1];
             Array.Copy(element.u_h, tUH, element.u_h.Length);
             Array.Copy(element.no, tNO, element.u_h.Length);
             Array.Copy(element.a_qO2, tqO2, element.u_h.Length);
-            this.u_h = tUH;
-            this.no = tNO;
-            this.a_qO2 = tqO2;
-            this.avd = element.avd;
-            this.VO2c = element.VO2c;
-            this.avd = ((this.mrr / element.mrr) * element.VO2c) / element.k2;;
-            this.v1 = element.v1; 
+            u_h = tUH;
+            no = tNO;
+            a_qO2 = tqO2;
+            avd = element.avd;
+            VO2c = element.VO2c;
+            avd = ((mrr / element.mrr) * element.VO2c) / element.k2;;
+            v1 = element.v1; 
         }
         public ModelElement()
         {
         }
         public object Clone()
         {
-            ModelElement element = (ModelElement)this.MemberwiseClone();
-            double[, ,] tUH = new double[Size + 1, Size + 1, Layers + 1];
-            double[, ,] tNO = new double[Size + 1, Size + 1, Layers + 1];
-            double[, ,] tqO2 = new double[Size + 1, Size + 1, Layers + 1];
+            var element = (ModelElement)MemberwiseClone();
+            var tUH = new double[Size + 1, Size + 1, Layers + 1];
+            var tNO = new double[Size + 1, Size + 1, Layers + 1];
+            var tqO2 = new double[Size + 1, Size + 1, Layers + 1];
             Array.Copy(u_h, tUH, u_h.Length);
             Array.Copy(no, tNO, u_h.Length);
             Array.Copy(a_qO2, tqO2, u_h.Length);

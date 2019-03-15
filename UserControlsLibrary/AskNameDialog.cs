@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using EngineClasses.OutputElementsClasses;
 
@@ -45,13 +41,13 @@ namespace UserControlsLibrary
         {
             OutText = textBox_name.Text;
             OKExited = true;
-            this.Close();
+            Close();
         }
 
         private void button_Cancel_Click(object sender, EventArgs e)
         {
             OKExited = false;
-            this.Close();
+            Close();
         }
     }
 }

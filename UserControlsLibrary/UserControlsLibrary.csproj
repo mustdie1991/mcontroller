@@ -42,7 +42,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="ZedGraph">
-      <HintPath>..\MuscleController\bin\Debug\ZedGraph.dll</HintPath>
+      <HintPath>..\ThirdParty\ZedGraph.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -41,13 +41,6 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.zedGraphControl_graphs.Location = new System.Drawing.Point(170, 112);
             this.zedGraphControl_graphs.Name = "zedGraphControl_graphs";
-            this.zedGraphControl_graphs.ScrollGrace = 0D;
-            this.zedGraphControl_graphs.ScrollMaxX = 0D;
-            this.zedGraphControl_graphs.ScrollMaxY = 0D;
-            this.zedGraphControl_graphs.ScrollMaxY2 = 0D;
-            this.zedGraphControl_graphs.ScrollMinX = 0D;
-            this.zedGraphControl_graphs.ScrollMinY = 0D;
-            this.zedGraphControl_graphs.ScrollMinY2 = 0D;
             this.zedGraphControl_graphs.Size = new System.Drawing.Size(618, 494);
             this.zedGraphControl_graphs.TabIndex = 11;
             // 
@@ -85,7 +78,7 @@
         #endregion
 
         private GraphsList graphsList1;
-        private ZedGraph.ZedGraphControl zedGraphControl_graphs;
+        private ZedGraph.ZedGraphControl zedGraphControl_graphs; 
         private GraphControlMenu graphControlMenu1;
     }
 }

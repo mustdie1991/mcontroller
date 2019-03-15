@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using EngineClasses.Interfaces;
 using System.Windows.Forms;
 using EventClasses.UserEventArgs;
@@ -25,13 +23,13 @@ namespace UserControlsLibrary.PointTab.MainWindowControls
             if (component is InputControl)
             {
                 controller = component;
-                InputControl ic = (InputControl)controller;
+                var ic = (InputControl)controller;
                 ic.SaveDataRequest += SaveDataRequest;
                 foreach (Control c in ((InputControl)controller).Controls)
                 {
                     if (c is ParametersBox)
                     {
-                        ParametersBox p = (ParametersBox)c;
+                        var p = (ParametersBox)c;
                         p.SendData += GetInputsData;
                     }
                     else if (c is ExperimentParametersBox)
@@ -44,12 +42,12 @@ namespace UserControlsLibrary.PointTab.MainWindowControls
         {
             if (currentBlock != null)
             {
-                AskBlocksDialog blDialog = new AskBlocksDialog();
+                var blDialog = new AskBlocksDialog();
                 blDialog.ShowDialog();
-                List<BaseModelParameters> tempList = new List<BaseModelParameters>();
+                var tempList = new List<BaseModelParameters>();
                 if (blDialog.ExitedOnOK)
                 {
-                    for (int i = 0; i < 3; i++)
+                    for (var i = 0; i < 3; i++)
                         if (blDialog.SavedBlocks[i])
                             tempList.Add(currentBlock[i].modelData);
                     LocalDataBase.AddBlocks(new MParametersList(blDialog.TextOut, tempList));
@@ -61,7 +59,7 @@ namespace UserControlsLibrary.PointTab.MainWindowControls
 
         public object TryBuildElementsBlock()
         {
-            int ValidationCounter = 0;
+            var ValidationCounter = 0;
             foreach (Control c in ((InputControl)controller).Controls)
             {
                 if (c is IValidatable)
@@ -90,7 +88,7 @@ namespace UserControlsLibrary.PointTab.MainWindowControls
                     }
                 }
                 currentBlock[0].Calculate();
-                ModelElement element = currentBlock[0].modelData;
+                var element = currentBlock[0].modelData;
                 currentBlock[1].modelData = element;
                 currentBlock[1].Calculate();
                 currentBlock[2].modelData.CopyOutputs(element);
@@ -103,7 +101,7 @@ namespace UserControlsLibrary.PointTab.MainWindowControls
         }
         private void SetOutputsData(MElementsBlock blocks)
         {
-            InputControl ic = (InputControl)controller;
+            var ic = (InputControl)controller;
             foreach (Control c in ic.Controls)
             {
                 if (c is BlockOutsBox)
@@ -125,10 +123,10 @@ namespace UserControlsLibrary.PointTab.MainWindowControls
         }
         private void GetInputsData(object sender, InputsEventArgs e)
         {
-            ParametersBox p = sender as ParametersBox;
+            var p = sender as ParametersBox;
             if (p != null)
             {
-                ModelElement element = new ModelElement(e.c9, e.km, e.dd, e.k2, e.ll, e.mrr, e.ke, TemporarySize, TemporaryLayers, TemporaryIterations);
+                var element = new ModelElement(e.c9, e.km, e.dd, e.k2, e.ll, e.mrr, e.ke, TemporarySize, TemporaryLayers, TemporaryIterations);
                 switch (p.Name)
                 {
                     case "parametersBox_block1" :

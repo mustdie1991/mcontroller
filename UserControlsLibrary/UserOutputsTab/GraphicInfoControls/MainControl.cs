@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace UserControlsLibrary.UserOutputsTab.GraphicInfoControls
 {
@@ -15,7 +8,7 @@ namespace UserControlsLibrary.UserOutputsTab.GraphicInfoControls
         public GraphicsInfoMainControl()
         {
             InitializeComponent();
-            dc = new GraphicsInfoDataController(this.graphicsInfoControlMenu1, this.pictureBox_output);
+            dc = new GraphicsInfoDataController(graphicsInfoControlMenu1, pictureBox_output);
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace EngineClasses.OutputElementsClasses
 {
@@ -16,7 +12,7 @@ namespace EngineClasses.OutputElementsClasses
         public bool Enabled { get; set; }
         public void SetEnabled(bool enabled)
         {
-            this.Enabled = enabled;
+            Enabled = enabled;
         }
         public HistogramData(TaskType tt, OutputType outs, HistogramSteps steps, Color col, string name = "NoName", bool _enabled = true)
         {
@@ -25,7 +21,7 @@ namespace EngineClasses.OutputElementsClasses
             color = col;
             tType = tt;
             Enabled = _enabled;
-            this.outType = outs;
+            outType = outs;
         }
     }
     

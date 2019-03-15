@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using EngineClasses.CoreClasses.Tasks;
 using EventClasses.UserEventArgs;
 using EngineClasses.OutputElementsClasses;
 
@@ -22,7 +15,7 @@ namespace UserControlsLibrary.PointTab.MatrixControls
         }
         private void matrixConrtolMenu1_Load(object sender, EventArgs e)
         {
-            dc = new MatrixDataController(this.dataGridView_Results, this.matrixConrtolMenu1);
+            dc = new MatrixDataController(dataGridView_Results, matrixConrtolMenu1);
         }
     }
 }

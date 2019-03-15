@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using EngineClasses.Interfaces;
 using System.Windows.Forms;
 using EngineClasses.CoreClasses;
@@ -24,8 +22,8 @@ namespace UserControlsLibrary.UserOutputsTab.CalculatedInfoControls
         }
         private void FillSingleElement(MParametersList p)
         {
-            DataGridView dgv = (DataGridView)ControlledObject;
-            for (int i = 0; i < p.list.Count; i++)
+            var dgv = (DataGridView)ControlledObject;
+            for (var i = 0; i < p.list.Count; i++)
             {
                 dgv.Rows.Add();
                 dgv[0, i].Value = p.Name;
@@ -48,9 +46,9 @@ namespace UserControlsLibrary.UserOutputsTab.CalculatedInfoControls
         }
         private void FillAllElements(List<MParametersList> list)
         {
-            DataGridView dgv = (DataGridView)ControlledObject;
+            var dgv = (DataGridView)ControlledObject;
             dgv.Rows.Clear();
-            foreach (MParametersList m in list)
+            foreach (var m in list)
             {
                 FillSingleElement(m);
             }
@@ -59,7 +57,7 @@ namespace UserControlsLibrary.UserOutputsTab.CalculatedInfoControls
         {
             if (data != null && data is List<MParametersList>)
             {
-                List<MParametersList> list = (List<MParametersList>)data;
+                var list = (List<MParametersList>)data;
                 FillAllElements(list);
             }
             else throw new ArgumentException("На ввод подан не правильный формат данных!");
@@ -69,7 +67,7 @@ namespace UserControlsLibrary.UserOutputsTab.CalculatedInfoControls
             if (component is DataGridView)
             {
                 ControlledObject = component;
-                DataGridView dgv = (DataGridView)ControlledObject;
+                var dgv = (DataGridView)ControlledObject;
                 //dgv.DataSource = localDataModel;
             }
         }

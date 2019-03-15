@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using EventClasses.UserEventArgs;
 using EngineClasses.Interfaces;
@@ -24,7 +19,7 @@ namespace UserControlsLibrary.PointTab.MainWindowControls
         private void ValidateTextBox(object sender)
         {
             int value;
-            bool isValid = (int.TryParse(((TextBox)sender).Text, out value) && value > 0);
+            var isValid = (int.TryParse(((TextBox)sender).Text, out value) && value > 0);
             if (!isValid)
             {
                 validated = false;

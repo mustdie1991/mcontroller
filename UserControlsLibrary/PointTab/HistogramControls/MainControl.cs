@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using EngineClasses.CoreClasses.Tasks;
+﻿using System.Windows.Forms;
 
 namespace UserControlsLibrary.PointTab.Histograms
 {
@@ -16,7 +8,7 @@ namespace UserControlsLibrary.PointTab.Histograms
         public MainHistogramControl()
         {
             InitializeComponent();
-            dc = new HistogramDataController(this.zedGraph_histograms, this.histogramDataGrid1, this.histogramControlMenu1, this.histogramList1);
+            dc = new HistogramDataController(zedGraph_histograms, histogramDataGrid1, histogramControlMenu1, histogramList1);
         }
     }
 }

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace UserControlsLibrary.PointTab.GraphicConrtols
 {
@@ -15,7 +8,7 @@ namespace UserControlsLibrary.PointTab.GraphicConrtols
         public MainGraphControl()
         {
             InitializeComponent();
-            dc = new GraphicsDataController(this.zedGraphControl_graphs, this.graphControlMenu1, this.graphsList1);
+            dc = new GraphicsDataController(zedGraphControl_graphs, graphControlMenu1, graphsList1);
         }
     }
 }

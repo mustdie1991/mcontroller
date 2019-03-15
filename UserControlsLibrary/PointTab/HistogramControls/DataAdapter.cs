@@ -1,7 +1,4 @@
-﻿using System.Text;
-using ZedGraph;
-using EngineClasses.Interfaces;
-using UserControlsLibrary;
+﻿using EngineClasses.Interfaces;
 using System.Collections.Generic;
 using EngineClasses.OutputElementsClasses;
 using System.Drawing;
@@ -43,7 +40,7 @@ namespace UserControlsLibrary.PointTab.Histograms
             ZedGraphControl zcontrol = (ZedGraphControl)histogramGrid;
             zcontrol.GraphPane.CurveList.Clear();
             zcontrol.GraphPane.BarSettings.Type = BarType.SortedOverlay;
-            foreach (HistogramData h in items)
+            foreach (var h in items)
             {
                 DrawSingleBar(h);
             }

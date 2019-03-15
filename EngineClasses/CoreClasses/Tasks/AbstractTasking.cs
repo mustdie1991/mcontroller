@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using EngineClasses.Interfaces;
-using EngineClasses.CoreClasses;
 
 namespace EngineClasses.CoreClasses.Tasks
 {
-    abstract public class Tasking : ICalculateAble
+    public abstract class Tasking : ICalculateAble
     {
         //входы
         private ModelElement ModelData;
@@ -20,24 +18,24 @@ namespace EngineClasses.CoreClasses.Tasks
         protected double mr_ha;
         protected double av;
 
-        internal protected double a1;
-        internal protected double a3;
-        internal protected double zr1;
-        internal protected double zr2;
-        internal protected double hm;
-        internal protected double hn;
-        internal protected double kno;
-        internal protected double ss;
-        internal protected double v1;
-        internal protected double c7;
-        internal protected int Size;
-        internal protected int Layers;
-        internal protected int ICount;
+        protected internal double a1;
+        protected internal double a3;
+        protected internal double zr1;
+        protected internal double zr2;
+        protected internal double hm;
+        protected internal double hn;
+        protected internal double kno;
+        protected internal double ss;
+        protected internal double v1;
+        protected internal double c7;
+        protected internal int Size;
+        protected internal int Layers;
+        protected internal int ICount;
 
 
-        internal protected double[, ,] u_h;
-        internal protected double[, ,] no;
-        internal protected double[, ,] a_qO2;
+        protected internal double[, ,] u_h;
+        protected internal double[, ,] no;
+        protected internal double[, ,] a_qO2;
 
         protected abstract double CountAVD();
         protected abstract double CountMRHA(double _k, int _x, int _y, int _z);
@@ -48,8 +46,8 @@ namespace EngineClasses.CoreClasses.Tasks
             modelData.pO2a = u_h[1, 1, 1] * 100;
             modelData.pO2v = u_h[1, 1, Layers] * 100;
             double sum = 0;
-            int counter = 0;
-            foreach (double d in u_h)
+            var counter = 0;
+            foreach (var d in u_h)
             {
                 if (d > 0)
                 {
@@ -66,7 +64,7 @@ namespace EngineClasses.CoreClasses.Tasks
         public void CoreCalculation()
         {
             ICount = modelData.ICount;
-            for (int a = 0; a < ICount; a++)
+            for (var a = 0; a < ICount; a++)
             {
                 mr_ha = 0;
                 PartCalculate(Size, Size, 1,
@@ -93,7 +91,7 @@ namespace EngineClasses.CoreClasses.Tasks
                               2 * (no[2, Size, Layers] + no[1, Size - 1, Layers]),
                               2 * no[1, Size, Layers - 1],
                               0.125);
-                for (int m = 2; m <= Size - 1; m++)
+                for (var m = 2; m <= Size - 1; m++)
                 {
                     PartCalculate(1, m, 1,
                                   2 * u_h[2, m, 1] + u_h[1, m + 1, 1] + u_h[1, m - 1, 1],
@@ -109,8 +107,8 @@ namespace EngineClasses.CoreClasses.Tasks
                                   0.25);
                 }
 
-                for (int n = 2; n <= Layers - 1; n++)
-                    for (int m = 2; m <= Size - 1; m++)
+                for (var n = 2; n <= Layers - 1; n++)
+                    for (var m = 2; m <= Size - 1; m++)
                         PartCalculate(1, m, n,
                                       2 * u_h[2, m, n] + u_h[1, m + 1, n] + u_h[1, m - 1, n],
                                       u_h[1, m, n + 1] + u_h[1, m, n - 1],
@@ -118,7 +116,7 @@ namespace EngineClasses.CoreClasses.Tasks
                                       no[1, m, n + 1] + no[1, m, n - 1],
                                       0.5);
 
-                for (int k = 2; k <= Size - 1; k++)
+                for (var k = 2; k <= Size - 1; k++)
                 {
                     PartCalculate(k, Size, Layers,
                                   2 * u_h[k, Size - 1, Layers] + u_h[k + 1, Size, Layers] + u_h[k - 1, Size, Layers],
@@ -137,7 +135,7 @@ namespace EngineClasses.CoreClasses.Tasks
                 no[Size, Size - 1, 1] = no[Size - 1, Size, 1];
                 u_h[Size, Size - 1, Layers] = u_h[Size - 1, Size, Layers];
                 no[Size, Size - 1, Layers] = no[Size - 1, Size, Layers];
-                for (int k = 2; k <= Size - 1; k++)
+                for (var k = 2; k <= Size - 1; k++)
                 {
                     u_h[k, k - 1, 1] = u_h[k - 1, k, 1];
                     no[k, k - 1, 1] = no[k - 1, k, 1];
@@ -156,10 +154,10 @@ namespace EngineClasses.CoreClasses.Tasks
                                   2 * no[k, k, Layers - 1],
                                   0.25);
                 }
-                for (int n = 2; n <= Layers - 1; n++)
+                for (var n = 2; n <= Layers - 1; n++)
                 {
                     u_h[Size, Size - 1, n] = u_h[Size - 1, Size, n];
-                    for (int k = 2; k <= Size - 1; k++)
+                    for (var k = 2; k <= Size - 1; k++)
                     {
                         PartCalculate(k, Size, n,
                                       u_h[k + 1, Size, n] + u_h[k - 1, Size, n] + 2 * u_h[k, Size - 1, n],
@@ -177,8 +175,8 @@ namespace EngineClasses.CoreClasses.Tasks
                                       0.5);
                     }
                 }
-                for (int m = 3; m <= Size - 1; m++)
-                    for (int k = 2; k <= m - 1; k++)
+                for (var m = 3; m <= Size - 1; m++)
+                    for (var k = 2; k <= m - 1; k++)
                     {
                         PartCalculate(k, m, 1,
                                       u_h[k + 1, m, 1] + u_h[k - 1, m, 1] + u_h[k, m + 1, 1] + u_h[k, m - 1, 1],
@@ -194,7 +192,7 @@ namespace EngineClasses.CoreClasses.Tasks
                                       2 * no[k, m, Layers - 1],
                                       0.5);
                     }
-                for (int n = 2; n <= Layers - 1; n++)
+                for (var n = 2; n <= Layers - 1; n++)
                 {
                     PartCalculate(1, Size, n,
                                   2 * u_h[1, Size - 1, n] + 2 * u_h[2, Size, n],
@@ -212,9 +210,9 @@ namespace EngineClasses.CoreClasses.Tasks
                                   no[Size, Size, n + 1] + no[Size, Size, n - 1],
                                   0.125);
                 }
-                for (int n = 2; n <= Layers - 1; n++)
-                    for (int m = 3; m <= Size - 1; m++)
-                        for (int k = 2; k <= m - 1; k++)
+                for (var n = 2; n <= Layers - 1; n++)
+                    for (var m = 3; m <= Size - 1; m++)
+                        for (var k = 2; k <= m - 1; k++)
                             PartCalculate(k, m, n,
                                           u_h[k + 1, m, n] + u_h[k - 1, m, n] + u_h[k, m + 1, n] + u_h[k, m - 1, n],
                                           u_h[k, m, n + 1] + u_h[k, m, n - 1],
@@ -224,12 +222,12 @@ namespace EngineClasses.CoreClasses.Tasks
 
                 modelData.avd = CountAVD();
                 double g1 = 0;
-                for (int n = 1; n <= Layers; n++)
+                for (var n = 1; n <= Layers; n++)
                     g1 += (u_h[1, 1, n] - u_h[2, 1, n]) * 100;
-                double c1k = modelData.c9;
-                for (int n = 1; n <= Layers; n++)
+                var c1k = modelData.c9;
+                for (var n = 1; n <= Layers; n++)
                 {
-                    double a_ha = (-Math.Log(Math.Abs(1 - Math.Sqrt(c1k / modelData.ke)))) / ss;
+                    var a_ha = (-Math.Log(Math.Abs(1 - Math.Sqrt(c1k / modelData.ke)))) / ss;
                     u_h[1, 1, n] = a_ha / 100;
                     no[1, 1, n] = 1;
                     c1k -= modelData.avd * (u_h[1, 1, n] - u_h[2, 1, n]) * 100 / g1;
@@ -240,10 +238,10 @@ namespace EngineClasses.CoreClasses.Tasks
                 }
             }
             c7 = 0;
-            List<double> u_h_temp = new List<double>();
-            for (int i = 1; i < Size; i++)
-                for (int j = 1; j < Size; j++)
-                    for (int k = 1; k < Layers; k++)
+            var u_h_temp = new List<double>();
+            for (var i = 1; i < Size; i++)
+                for (var j = 1; j < Size; j++)
+                    for (var k = 1; k < Layers; k++)
                         u_h_temp.Add(u_h[i, j, k]);
             u_h_temp.RemoveAll(x => x == 0);
             c7 = u_h_temp.Sum() / u_h_temp.Count;
@@ -254,7 +252,7 @@ namespace EngineClasses.CoreClasses.Tasks
             hm = modelData.dd / (2 * (Size - 1));
             hn = modelData.ll / (Layers - 1);
             kno = (ModelElement.mn * 10e-9) / ModelElement.kk;
-            double y = (Math.Pow(hn, 2) * 2 + Math.Pow(hm, 2)) * 2;
+            var y = (Math.Pow(hn, 2) * 2 + Math.Pow(hm, 2)) * 2;
             a1 = Math.Pow(hn, 2) / y;
             a3 = Math.Pow(hm, 2) / y;
             zr1 = -1 / (ModelElement.alfac * ModelElement.d) * Math.Pow((hm * hn), 2) / y / 100;
@@ -266,9 +264,9 @@ namespace EngineClasses.CoreClasses.Tasks
         }
         protected void FillModelArrays()
         {
-            for (int i = 0; i < Size; i++)
-                for (int j = 0; j < Size; j++)
-                    for (int k = 0; k < Layers; k++)
+            for (var i = 0; i < Size; i++)
+                for (var j = 0; j < Size; j++)
+                    for (var k = 0; k < Layers; k++)
                     {
                         modelData.u_h[i, j, k] = u_h[i, j, k];
                         modelData.no[i, j, k] = no[i, j, k];

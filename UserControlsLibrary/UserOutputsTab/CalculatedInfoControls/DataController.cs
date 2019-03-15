@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UserControlsLibrary.UserOutputsTab.CalculatedInfoControls;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using EventClasses.UserEventArgs;
 
 namespace UserControlsLibrary.UserOutputsTab.CalculatedInfoControls

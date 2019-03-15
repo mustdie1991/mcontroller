@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using EventClasses.UserEventArgs;
 using EngineClasses.OutputElementsClasses;
@@ -23,7 +18,7 @@ namespace UserControlsLibrary.PointTab.Histograms
         {
             dataGridView_All.Rows.Clear();
             dataGridView_All.RowCount = items.Count;
-            for (int i = 0; i < items.Count; i++)
+            for (var i = 0; i < items.Count; i++)
             {
                 dataGridView_All[0, i].Value = items[i].interval;
                 dataGridView_All[1, i].Value = items[i].points;
@@ -37,7 +32,7 @@ namespace UserControlsLibrary.PointTab.Histograms
         public void FillComboHists(string[] names)
         {
             ClearAllData();
-            for (int i = 0; i < names.Length; i++)
+            for (var i = 0; i < names.Length; i++)
                 comboBox_number.Items.Add(names[i]);
         }
         public void ClearAllData()
