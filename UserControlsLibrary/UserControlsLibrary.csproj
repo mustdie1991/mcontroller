@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DB256AC2-3F86-4E1D-92CE-4944AD71FAD4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UserControlsLibrary</RootNamespace>
+    <AssemblyName>UserControlsLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZedGraph">
+      <HintPath>..\MuscleController\bin\Debug\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AskBlocksDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AskBlocksDialog.Designer.cs">
+      <DependentUpon>AskBlocksDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AskNameDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AskNameDialog.Designer.cs">
+      <DependentUpon>AskNameDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DependencyControls\DataAdapter.cs" />
+    <Compile Include="DependencyControls\DataController.cs" />
+    <Compile Include="DependencyControls\DataModel.cs" />
+    <Compile Include="DependencyControls\ControlMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DependencyControls\ControlMenu.Designer.cs">
+      <DependentUpon>ControlMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\DataController.cs" />
+    <Compile Include="LocalDataBase.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\GraphicConrtols\MainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\GraphicConrtols\MainControl.Designer.cs">
+      <DependentUpon>MainControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\HistogramControls\MainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\HistogramControls\MainControl.Designer.cs">
+      <DependentUpon>MainControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\MatrixControls\MainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\MatrixControls\MainControl.Designer.cs">
+      <DependentUpon>MainControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\MainWindowControls\InputControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\MainWindowControls\InputControl.Designer.cs">
+      <DependentUpon>InputControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DependencyControls\RegulatorInputControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DependencyControls\RegulatorInputControl.Designer.cs">
+      <DependentUpon>RegulatorInputControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\GraphicConrtols\DataModel.cs" />
+    <Compile Include="PointTab\HistogramControls\DataModel.cs" />
+    <Compile Include="PointTab\MainWindowControls\BlockOutsBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\MainWindowControls\BlockOutsBox.Designer.cs">
+      <DependentUpon>BlockOutsBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\MainWindowControls\ConstValuesBlock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\MainWindowControls\ConstValuesBlock.Designer.cs">
+      <DependentUpon>ConstValuesBlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\GraphicConrtols\ControlMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\GraphicConrtols\ControlMenu.Designer.cs">
+      <DependentUpon>ControlMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\GraphicConrtols\ContolList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\GraphicConrtols\ContolList.Designer.cs">
+      <DependentUpon>ContolList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\GraphicConrtols\DataAdapter.cs" />
+    <Compile Include="PointTab\GraphicConrtols\DataController.cs" />
+    <Compile Include="PointTab\HistogramControls\DataController.cs" />
+    <Compile Include="PointTab\HistogramControls\ControlMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\HistogramControls\ControlMenu.Designer.cs">
+      <DependentUpon>ControlMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\HistogramControls\ControlGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\HistogramControls\ControlGrid.Designer.cs">
+      <DependentUpon>ControlGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\HistogramControls\DataAdapter.cs" />
+    <Compile Include="PointTab\HistogramControls\ControlList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\HistogramControls\ControlList.Designer.cs">
+      <DependentUpon>ControlList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\MainWindowControls\DataController.cs" />
+    <Compile Include="PointTab\MainWindowControls\ExperimentParametersBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\MainWindowControls\ExperimentParametersBox.Designer.cs">
+      <DependentUpon>ExperimentParametersBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\MainWindowControls\ParametersBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\MainWindowControls\ParametersBox.Designer.cs">
+      <DependentUpon>ParametersBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\MatrixControls\GUIAdapter.cs" />
+    <Compile Include="PointTab\MatrixControls\GUIController.cs" />
+    <Compile Include="PointTab\MatrixControls\MatrixControlMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\MatrixControls\MatrixControlMenu.Designer.cs">
+      <DependentUpon>MatrixControlMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\OutputTabControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\OutputTabControl.Designer.cs">
+      <DependentUpon>OutputTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointTab\TabSingleElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PointTab\TabSingleElement.Designer.cs">
+      <DependentUpon>TabSingleElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserOutputsTab\AccountDataController.cs" />
+    <Compile Include="UserOutputsTab\CalculatedInfoControls\BlocksDataAdapter.cs" />
+    <Compile Include="UserOutputsTab\CalculatedInfoControls\ControlMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserOutputsTab\CalculatedInfoControls\ControlMenu.Designer.cs">
+      <DependentUpon>ControlMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserOutputsTab\CalculatedInfoControls\DataController.cs" />
+    <Compile Include="UserOutputsTab\CalculatedInfoControls\MainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserOutputsTab\CalculatedInfoControls\MainControl.Designer.cs">
+      <DependentUpon>MainControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserOutputsTab\GraphicInfoControls\ControlMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserOutputsTab\GraphicInfoControls\ControlMenu.Designer.cs">
+      <DependentUpon>ControlMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserOutputsTab\GraphicInfoControls\DataController.cs" />
+    <Compile Include="UserOutputsTab\GraphicInfoControls\MainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserOutputsTab\GraphicInfoControls\MainControl.Designer.cs">
+      <DependentUpon>MainControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserOutputsTab\MainOutputsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserOutputsTab\MainOutputsControl.Designer.cs">
+      <DependentUpon>MainOutputsControl.cs</DependentUpon>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AskBlocksDialog.resx">
+      <DependentUpon>AskBlocksDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AskNameDialog.resx">
+      <DependentUpon>AskNameDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DependencyControls\ControlMenu.resx">
+      <DependentUpon>ControlMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\GraphicConrtols\MainControl.resx">
+      <DependentUpon>MainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\HistogramControls\MainControl.resx">
+      <DependentUpon>MainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\MatrixControls\MainControl.resx">
+      <DependentUpon>MainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\MainWindowControls\InputControl.resx">
+      <DependentUpon>InputControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DependencyControls\RegulatorInputControl.resx">
+      <DependentUpon>RegulatorInputControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\MainWindowControls\BlockOutsBox.resx">
+      <DependentUpon>BlockOutsBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\MainWindowControls\ConstValuesBlock.resx">
+      <DependentUpon>ConstValuesBlock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\GraphicConrtols\ControlMenu.resx">
+      <DependentUpon>ControlMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\GraphicConrtols\ContolList.resx">
+      <DependentUpon>ContolList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\HistogramControls\ControlMenu.resx">
+      <DependentUpon>ControlMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\HistogramControls\ControlGrid.resx">
+      <DependentUpon>ControlGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\HistogramControls\ControlList.resx">
+      <DependentUpon>ControlList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\MainWindowControls\ExperimentParametersBox.resx">
+      <DependentUpon>ExperimentParametersBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\MainWindowControls\ParametersBox.resx">
+      <DependentUpon>ParametersBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\MatrixControls\MatrixControlMenu.resx">
+      <DependentUpon>MatrixControlMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\OutputTabControl.resx">
+      <DependentUpon>OutputTabControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointTab\TabSingleElement.resx">
+      <DependentUpon>TabSingleElement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserOutputsTab\CalculatedInfoControls\ControlMenu.resx">
+      <DependentUpon>ControlMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserOutputsTab\CalculatedInfoControls\MainControl.resx">
+      <DependentUpon>MainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserOutputsTab\GraphicInfoControls\ControlMenu.resx">
+      <DependentUpon>ControlMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserOutputsTab\GraphicInfoControls\MainControl.resx">
+      <DependentUpon>MainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserOutputsTab\MainOutputsControl.resx">
+      <DependentUpon>MainOutputsControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EngineClasses\EngineClasses.csproj">
+      <Project>{A3E8910C-B572-48AE-A1E8-50D1EED01AD6}</Project>
+      <Name>EngineClasses</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

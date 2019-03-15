@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A3E8910C-B572-48AE-A1E8-50D1EED01AD6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EngineClasses</RootNamespace>
+    <AssemblyName>EngineClasses</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZedGraph">
+      <HintPath>..\MuscleController\bin\Debug\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CoreClasses\Tasks\AbstractTasking.cs" />
+    <Compile Include="CoreClasses\Tasks\AdaptedTask.cs" />
+    <Compile Include="CoreClasses\Tasks\ElementsBlock.cs" />
+    <Compile Include="CoreClasses\Tasks\NonAdaptedTask.cs" />
+    <Compile Include="CoreClasses\MElement.cs" />
+    <Compile Include="CoreClasses\Tasks\RegulatingTask.cs" />
+    <Compile Include="Interfaces\IAdapter.cs" />
+    <Compile Include="Interfaces\IAdvancedDataModel.cs" />
+    <Compile Include="Interfaces\ICalculateable.cs" />
+    <Compile Include="Interfaces\IDataModel.cs" />
+    <Compile Include="Interfaces\IValidatable.cs" />
+    <Compile Include="OutputElementsClasses\DataConverter.cs" />
+    <Compile Include="OutputElementsClasses\DependencyItem.cs" />
+    <Compile Include="OutputElementsClasses\HelpItems.cs" />
+    <Compile Include="OutputElementsClasses\HistogramItem.cs" />
+    <Compile Include="OutputElementsClasses\GraphItem.cs" />
+    <Compile Include="OutputElementsClasses\MatrixItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EventClasses\UserEventArgs.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

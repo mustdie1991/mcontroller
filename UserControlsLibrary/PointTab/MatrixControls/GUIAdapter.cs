@@ -1,0 +1,117 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using EngineClasses.Interfaces;
+using UserControlsLibrary;
+using System.Drawing;
+using System.Windows.Forms;
+using EngineClasses.OutputElementsClasses;
+using EngineClasses.CoreClasses;
+using System.Drawing.Imaging;
+
+namespace UserControlsLibrary.PointTab.MatrixControls
+{
+    public class MatrixAdapter : IAdapters
+    {
+        public static MatrixAdapter instance { get; private set; }
+        private object CustomDataGrid;
+        private MatrixData mData;
+        protected MatrixAdapter()
+        {
+        }
+
+        private System.Windows.Forms.DataGridView ConvertToGrid()
+        {
+            return (System.Windows.Forms.DataGridView)CustomDataGrid;
+        }
+
+        private static Color SelectColor(FillColourType mFill, double value)
+        {
+            switch (mFill)
+            {
+                case FillColourType.Дискретный:
+                    if (value >= 0 && value < 0.2)
+                        return Color.Green;
+                    if (value >= 0.2 && value < 0.4)
+                        return Color.LightYellow;
+                    if (value >= 0.4 && value < 0.6)
+                        return Color.Yellow;
+                    if (value >= 0.6 && value < 0.8)
+                        return Color.Orange;
+                    else
+                        return Color.Red;
+                case FillColourType.Градиент:
+                    return Color.FromArgb((value >= 0.5) ? 255 : (int)(255 * Math.Pow(2 * value, 0.5)), (value < 0.5) ? 255 : (int)(255 * Math.Pow((1 - value) * 2, 0.5)), 0);
+                default:
+                    return Color.White;
+            }
+        }
+
+        private void Resize(int horizontalCells, int verticalCells)
+        {
+            if (CustomDataGrid != null)
+            {
+                ((System.Windows.Forms.DataGridView)CustomDataGrid).Rows.Clear();
+                ((System.Windows.Forms.DataGridView)CustomDataGrid).Columns.Clear();
+                System.Windows.Forms.DataGridView dataGrid = ConvertToGrid();
+                dataGrid.RowCount = verticalCells;
+                dataGrid.ColumnCount = horizontalCells;
+                double tempSize = dataGrid.Height / verticalCells;
+                double resizing = tempSize - (int)tempSize;
+                double resizingCounter = 0;
+                if (verticalCells > 40)
+                    dataGrid.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+                else
+                {
+                    foreach (System.Windows.Forms.DataGridViewRow dgw in dataGrid.Rows)
+                    {
+                        dgw.Height = dataGrid.Height / verticalCells;
+                        resizingCounter += resizing;
+                        if (resizingCounter > 1)
+                        {
+                            dgw.Height += (int)resizingCounter;
+                            resizingCounter -= (int)resizingCounter;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void Fill(object data)
+        {
+            if (data is MatrixData)
+            {
+                mData = (MatrixData)data;
+                Resize(mData.horizontalCells, mData.verticalCells);
+                System.Windows.Forms.DataGridView dataGrid = ConvertToGrid();
+                for (int i = 0; i < mData.horizontalCells; i++)
+                    for (int j = 0; j < mData.verticalCells; j++)
+                    {
+                        dataGrid[i, j].Value = mData.matrix[i, j].ToString("N4");
+                        dataGrid[i, j].Style.BackColor = SelectColor(mData.mColor, mData.matrix[i, j]);
+                    }
+            }
+        }
+        public void SetComponent(object component)
+        {
+            if (component is System.Windows.Forms.DataGridView)
+                CustomDataGrid = component;
+        }
+        public Bitmap DrawToBitmap(BaseModelParameters parametersToDraw)
+        {
+            DataGridView MyGrid = (DataGridView)CustomDataGrid;
+            Bitmap bmp = new Bitmap(MyGrid.Width, MyGrid.Height + 50);
+            Bitmap bmpDataGrid = new Bitmap(MyGrid.Width, MyGrid.Height);
+            MyGrid.DrawToBitmap(bmpDataGrid, new Rectangle(0, 0, MyGrid.Width, MyGrid.Height));
+            Graphics g = Graphics.FromImage(bmp);
+            g.DrawString(parametersToDraw.ToString(), new Font("Arial", 10), new SolidBrush(Color.Red), new PointF(0.0f, 0.0f));
+            g.DrawImage(bmpDataGrid, 0.0f, 50.0f);
+            return bmp;
+        }
+        static MatrixAdapter()
+        {
+            instance = new MatrixAdapter();
+        }
+    }
+}
