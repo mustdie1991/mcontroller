@@ -7,7 +7,7 @@ namespace UserControlsLibrary.PointTab.GraphicConrtols
 {
     public class GraphsDataModel : IAdvancedDataModel
     {
-        private List<GraphItem> gItems;
+        private readonly List<GraphItem> gItems;
 
         public GraphsDataModel()
         {

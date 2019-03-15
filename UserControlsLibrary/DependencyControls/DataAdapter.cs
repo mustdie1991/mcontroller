@@ -1,5 +1,6 @@
 ﻿using System;
 using EngineClasses.Interfaces;
+using ZedGraph;
 
 namespace UserControlsLibrary.PointTab.DependencyControls
 {

@@ -11,7 +11,7 @@ namespace UserControlsLibrary.PointTab
 {
     public class SingleTabDataController
     {
-        private object OutputControl;
+        private readonly object OutputControl;
         private object InputControl;
         public event EventHandler<UserEventArgs<LocalDataGraphicsElement>> saveRequested;
         public SingleTabDataController(object outControl, object inControl)
@@ -36,9 +36,9 @@ namespace UserControlsLibrary.PointTab
     }
     public class OutputsDataController
     {
-        private object MatrixControlOut;
-        private object GraphControlOut;
-        private object HistogramControlOut;
+        private readonly object MatrixControlOut;
+        private readonly object GraphControlOut;
+        private readonly object HistogramControlOut;
 
         public event EventHandler<UserEventArgs<LocalDataGraphicsElement>> saveRequested;
 

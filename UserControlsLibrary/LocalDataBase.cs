@@ -6,8 +6,8 @@ namespace UserControlsLibrary
 {
     public static class LocalDataBase
     {
-        private static List<LocalDataGraphicsElement> graphicElements;
-        private static List<MParametersList> SavedModelBlocks;
+        private static readonly List<LocalDataGraphicsElement> graphicElements;
+        private static readonly List<MParametersList> SavedModelBlocks;
 
         public static event EventHandler<EventArgs> OnUpdateBlocks;
         public static event EventHandler<EventArgs> OnUpdateGraphics;

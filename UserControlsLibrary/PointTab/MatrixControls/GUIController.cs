@@ -9,7 +9,7 @@ namespace UserControlsLibrary.PointTab.MatrixControls
 {
     public class MatrixDataController
     {
-        private object ControllerComponent;
+        private readonly object ControllerComponent;
         public event EventHandler<UserEventArgs<LocalDataGraphicsElement>> DataSaveRequested;
 
         public MatrixDataController(object Controlled, object Controller)

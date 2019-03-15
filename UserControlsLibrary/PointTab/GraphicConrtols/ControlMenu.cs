@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using EventClasses.UserEventArgs;
 using EngineClasses.CoreClasses.Tasks;
 using EngineClasses.OutputElementsClasses;
+using ZedGraph;
+using GraphItem = EngineClasses.OutputElementsClasses.GraphItem;
 
 namespace UserControlsLibrary.PointTab.GraphicConrtols
 {
@@ -10,7 +12,7 @@ namespace UserControlsLibrary.PointTab.GraphicConrtols
     {
         public event EventHandler<UserEventArgs<GraphItem>> BuildGraph;
         public event EventHandler<TypeEventArgs> TypeChanged;
-        ColorDialog dlg = new ColorDialog();
+        readonly ColorDialog dlg = new ColorDialog();
         private MElementsBlock mBlock;
         
         public GraphControlMenu()
@@ -33,17 +35,20 @@ namespace UserControlsLibrary.PointTab.GraphicConrtols
 
         private void buttonBuild_Click(object sender, EventArgs e)
         {
-            if (comboBox_BNumber.SelectedIndex != -1 && comboBox_Type.SelectedIndex != -1 && !String.IsNullOrEmpty(textBox_graphName.Text) && numericUpDown_Layer.Value > 0)
+            if (comboBox_BNumber.SelectedIndex != -1 && comboBox_Type.SelectedIndex != -1 &&
+                !string.IsNullOrEmpty(textBox_graphName.Text) && numericUpDown_Layer.Value > 0)
             {
-                BuildGraph(this, new UserEventArgs<GraphItem>(Converters.ConvertToGraphItem
-                                                             (mBlock[comboBox_BNumber.SelectedIndex].modelData,
-                                                             (TaskType)(Enum.GetValues(typeof(TaskType)).GetValue(comboBox_BNumber.SelectedIndex)),
-                                                             (OutputType)(Enum.GetValues(typeof(OutputType)).GetValue(comboBox_Type.SelectedIndex)),
-                                                             (int)numericUpDown_Layer.Value,
-                                                             dlg.Color, 
-                                                             string.Format("{0}({1})", textBox_graphName.Text, Enum.GetValues(typeof(TaskType)).GetValue(comboBox_BNumber.SelectedIndex).ToString()),
-                                                             (comboBox_color.SelectedIndex > -1) ? (SymbolType)(Enum.GetValues(typeof(SymbolType)).GetValue(comboBox_color.SelectedIndex)) : SymbolType.Default)));
-            } 
+                //BuildGraph(this, new UserEventArgs<GraphItem>(Converters.ConvertToGraphItem
+                //(mBlock[comboBox_BNumber.SelectedIndex].modelData,
+                //    (TaskType) (Enum.GetValues(typeof(TaskType)).GetValue(comboBox_BNumber.SelectedIndex)),
+                //    (OutputType) (Enum.GetValues(typeof(OutputType)).GetValue(comboBox_Type.SelectedIndex)),
+                //    (int) numericUpDown_Layer.Value,
+                //    dlg.Color,
+                //    $"{textBox_graphName.Text}({Enum.GetValues(typeof(TaskType)).GetValue(comboBox_BNumber.SelectedIndex)})",
+                //    (comboBox_color.SelectedIndex > -1)
+                //        ? (SymbolType) (Enum.GetValues(typeof(SymbolType)).GetValue(comboBox_color.SelectedIndex))
+                //        : SymbolType.Default)));
+            }
         }
 
         private void comboBox_Type_SelectedIndexChanged(object sender, EventArgs e)

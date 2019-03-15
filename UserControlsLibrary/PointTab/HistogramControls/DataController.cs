@@ -5,15 +5,16 @@ using EngineClasses.OutputElementsClasses;
 using EventClasses.UserEventArgs;
 using EngineClasses.CoreClasses.Tasks;
 using System.Drawing;
+using ZedGraph;
 
 namespace UserControlsLibrary.PointTab.Histograms
 {
     public class HistogramDataController
     {
-        private object ControllerComponent;
-        private object HistogramDisplayController;
-        private object GridResultsDisplay;
-        private HistogramsDataModel hDataModel;
+        private readonly object ControllerComponent;
+        private readonly object HistogramDisplayController;
+        private readonly object GridResultsDisplay;
+        private readonly HistogramsDataModel hDataModel;
         private OutputType outsType;
 
         public void SendDataToControlMenu(MElementsBlock element)
@@ -22,22 +23,22 @@ namespace UserControlsLibrary.PointTab.Histograms
         }
         public HistogramDataController(object ControlledGraph, object ControlledGrid, object Controller, object HistsController)
         {
-            if (ControlledGraph is ZedGraphControl && ControlledGrid is HistogramDataGrid && Controller is HistogramControlMenu && HistsController is HistogramList)
+            if (ControlledGraph is ZedGraphControl && ControlledGrid is HistogramDataGrid grid && Controller is HistogramControlMenu menu && HistsController is HistogramList list)
             {
                 HistogramAdapter.instance.SetComponent(ControlledGraph);
-                ControllerComponent = Controller;
-                HistogramDisplayController = HistsController;
-                GridResultsDisplay = ControlledGrid;
+                ControllerComponent = menu;
+                HistogramDisplayController = list;
+                GridResultsDisplay = grid;
                 hDataModel = new HistogramsDataModel();
 
                 //Event Handlers
-                ((HistogramList)HistsController).HistogramEnabled += EnableHistogram;
-                ((HistogramList)HistsController).HistogramDisabled += DisableHistogram;
-                ((HistogramList)HistsController).AllHistsCleared += ClearAllHistograms;
-                ((HistogramList)HistsController).SaveHists += SaveHistogram;
-                ((HistogramControlMenu)Controller).BuildHistogram += BuildHistogram;
-                ((HistogramControlMenu)Controller).TypeChanged += ChangeHistogramType;
-                ((HistogramDataGrid)ControlledGrid).histogramChanged += ChangeHistogram;
+                list.HistogramEnabled += EnableHistogram;
+                list.HistogramDisabled += DisableHistogram;
+                list.AllHistsCleared += ClearAllHistograms;
+                list.SaveHists += SaveHistogram;
+                menu.BuildHistogram += BuildHistogram;
+                menu.TypeChanged += ChangeHistogramType;
+                grid.histogramChanged += ChangeHistogram;
             }
             else throw new ArgumentException("Не верные элементы управления для вывода гистограм");
         }

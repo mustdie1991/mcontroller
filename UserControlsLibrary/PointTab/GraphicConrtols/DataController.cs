@@ -4,14 +4,16 @@ using EngineClasses.OutputElementsClasses;
 using EventClasses.UserEventArgs;
 using EngineClasses.CoreClasses.Tasks;
 using System.Drawing;
+using ZedGraph;
+using GraphItem = EngineClasses.OutputElementsClasses.GraphItem;
 
 namespace UserControlsLibrary.PointTab.GraphicConrtols
 {
     public class GraphicsDataController
     {
-        private object ControllerComponent;
-        private object CurveDisplayController;
-        private GraphsDataModel mDataModel;
+        private readonly object ControllerComponent;
+        private readonly object CurveDisplayController;
+        private readonly GraphsDataModel mDataModel;
         private OutputType outsType;
 
         public GraphicsDataController(object Controlled, object Controller, object CurveController)

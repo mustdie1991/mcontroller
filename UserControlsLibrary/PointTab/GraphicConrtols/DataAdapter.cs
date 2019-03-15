@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using EngineClasses.Interfaces;
 using EngineClasses.OutputElementsClasses;
 using System.Drawing;
+using ZedGraph;
+using GraphItem = EngineClasses.OutputElementsClasses.GraphItem;
 
 namespace UserControlsLibrary.PointTab.GraphicConrtols
 {
@@ -20,8 +22,8 @@ namespace UserControlsLibrary.PointTab.GraphicConrtols
         }
         public void SaveAll()
         {
-            ZedGraphControl zcontrol = (ZedGraphControl)graphicsGrid;
-            zcontrol.SaveAsBitmap();
+            //var zcontrol = (ZedGraphControl)graphicsGrid;
+            //zcontrol.DrawToBitmap();
         }
         public void Fill(object data)
         {
@@ -39,7 +41,7 @@ namespace UserControlsLibrary.PointTab.GraphicConrtols
         {
             if (items != null && graphicsGrid != null && items.Count > 0)
             {
-                ZedGraphControl zcontrol = (ZedGraphControl)graphicsGrid;
+                var zcontrol = (ZedGraphControl)graphicsGrid;
                 zcontrol.GraphPane.CurveList.Clear();
                 foreach (var gItem in items)
                     DrawSingleCurve(gItem);
@@ -52,20 +54,22 @@ namespace UserControlsLibrary.PointTab.GraphicConrtols
         }
         private void DrawSingleCurve(GraphItem item)
         {
-            if (graphicsGrid != null)
+            if (graphicsGrid == null)
             {
-                ZedGraphControl zcontrol = (ZedGraphControl)graphicsGrid;
-                zcontrol.GraphPane.AddCurve(item.Name, item.points, item.gColor, item.sType);
-                zcontrol.GraphPane.AxisChange();
-                zcontrol.Invalidate();
+                return;
             }
+
+            var zcontrol = (ZedGraphControl)graphicsGrid;
+            //zcontrol.GraphPane.AddCurve(item.Name, item.points.., item.gColor, item.sType);
+            //zcontrol.GraphPane.AxisChange();
+            zcontrol.Invalidate();
 
         }
         public void ResetTitles(OutputType outs)
         {
             if (graphicsGrid != null)
             {
-                ZedGraphControl zcontrol = (ZedGraphControl)graphicsGrid;
+                var zcontrol = (ZedGraphControl)graphicsGrid;
                 string finalY;
                 string title;
                 switch (outs)
@@ -83,15 +87,15 @@ namespace UserControlsLibrary.PointTab.GraphicConrtols
                         title = "График CY";
                         break;
                 }
-                zcontrol.GraphPane.Title.Text = title;
-                zcontrol.GraphPane.XAxis.Title.Text = "Cетка";
-                zcontrol.GraphPane.YAxis.Title.Text = finalY;
+                zcontrol.GraphPane.Title = title;
+                zcontrol.GraphPane.XAxis.Title = "Cетка";
+                zcontrol.GraphPane.YAxis.Title = finalY;
                 zcontrol.Invalidate();
             }
         }
         public void ClearGraphPane()
         {
-            ZedGraphControl zcontrol = (ZedGraphControl)graphicsGrid;
+            var zcontrol = (ZedGraphControl)graphicsGrid;
             zcontrol.GraphPane.CurveList.Clear();
             zcontrol.AxisChange();
             zcontrol.Invalidate();
@@ -99,8 +103,8 @@ namespace UserControlsLibrary.PointTab.GraphicConrtols
 
         public Bitmap DrawToBitmap()
         {
-            ZedGraphControl zcontrol = (ZedGraphControl)graphicsGrid;
-            return new Bitmap(zcontrol.GraphPane.GetImage());
+            var zcontrol = (ZedGraphControl)graphicsGrid;
+            return new Bitmap(zcontrol.GraphPane.Image);
         }
     }
 }

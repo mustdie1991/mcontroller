@@ -7,7 +7,7 @@ namespace UserControlsLibrary.PointTab.Histograms
 {
     public class HistogramsDataModel : IAdvancedDataModel
     {
-        private List<HistogramData> hData;
+        private readonly List<HistogramData> hData;
 
         public HistogramsDataModel()
         {

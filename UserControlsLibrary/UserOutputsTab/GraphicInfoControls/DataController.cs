@@ -8,8 +8,8 @@ namespace UserControlsLibrary.UserOutputsTab.GraphicInfoControls
 {
     public class GraphicsInfoDataController
     {
-        private object ListController;
-        private object ImageController;
+        private readonly object ListController;
+        private readonly object ImageController;
         private BitmapType currentOutputType;
 
         public GraphicsInfoDataController(object listControl, object pictureControl)

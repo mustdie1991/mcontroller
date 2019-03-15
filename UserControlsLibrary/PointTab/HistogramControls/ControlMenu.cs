@@ -8,7 +8,7 @@ namespace UserControlsLibrary.PointTab.Histograms
 {
     public partial class HistogramControlMenu : UserControl
     {
-        private ColorDialog dlg;
+        private readonly ColorDialog dlg;
 
         public event EventHandler<UserEventArgs<HistogramData>> BuildHistogram;
         public event EventHandler<TypeEventArgs> TypeChanged;
@@ -41,7 +41,7 @@ namespace UserControlsLibrary.PointTab.Histograms
                                                     (OutputType)(Enum.GetValues(typeof(OutputType)).GetValue(comboBox_type.SelectedIndex)),
                                                     (TaskType)(Enum.GetValues(typeof(TaskType)).GetValue(comboBox_block.SelectedIndex)),
                                                     dlg.Color,
-                                                    string.Format("{0}({1})", textBox_name.Text, Enum.GetValues(typeof(TaskType)).GetValue(comboBox_block.SelectedIndex).ToString()))));
+                        $"{textBox_name.Text}({Enum.GetValues(typeof(TaskType)).GetValue(comboBox_block.SelectedIndex).ToString()})")));
             }
         }
 

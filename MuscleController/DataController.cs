@@ -8,7 +8,7 @@ namespace UserControlsLibrary
     public class MainDataController
     {
         private object AccountTab;
-        private object SenderTab;
+        private readonly object SenderTab;
 
         public MainDataController(object accountTab, object sendingDataTab)
         {

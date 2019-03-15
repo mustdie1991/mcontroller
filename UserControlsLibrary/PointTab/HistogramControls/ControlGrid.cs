@@ -22,7 +22,7 @@ namespace UserControlsLibrary.PointTab.Histograms
             {
                 dataGridView_All[0, i].Value = items[i].interval;
                 dataGridView_All[1, i].Value = items[i].points;
-                dataGridView_All[2, i].Value = string.Format("{0:0.00%}",items[i].percent);
+                dataGridView_All[2, i].Value = $"{items[i].percent:0.00%}";
             }
         }
         public void AddSingleComboitem(string name)

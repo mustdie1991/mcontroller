@@ -4,7 +4,7 @@ namespace EngineClasses.CoreClasses.Tasks
 {
     public class MElementsBlock : IEnumerable<Tasking>
     {
-        List<Tasking> tasks = new List<Tasking>();
+        readonly List<Tasking> tasks = new List<Tasking>();
         public MElementsBlock()
         {
             tasks.AddRange(new Tasking[] { new NonAdaptedTask(), new AdaptingTask(), new RegulatingTask() });

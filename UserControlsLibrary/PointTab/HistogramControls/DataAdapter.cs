@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using EngineClasses.OutputElementsClasses;
 using System.Drawing;
+using ZedGraph;
 
 namespace UserControlsLibrary.PointTab.Histograms
 {
@@ -18,33 +19,34 @@ namespace UserControlsLibrary.PointTab.Histograms
         }
         public void Fill(object data)
         {
-            ZedGraphControl zcontrol = (ZedGraphControl)histogramGrid;
-            if (data is HistogramData)
+            var zcontrol = (ZedGraphControl)histogramGrid;
+            switch (data)
             {
-                DrawSingleBar((HistogramData)data);
-            }
-            else if (data is List<HistogramData>)
-            {
-                DrawCollectionOfHists((List<HistogramData>)data);
+                case HistogramData _:
+                    DrawSingleBar((HistogramData)data);
+                    break;
+                case List<HistogramData> _:
+                    DrawCollectionOfHists((List<HistogramData>)data);
+                    break;
             }
             zcontrol.AxisChange();
             zcontrol.Invalidate();
         }
         private void DrawSingleBar(HistogramData item)
         {
-            ZedGraphControl zcontrol = (ZedGraphControl)histogramGrid;
+            var zcontrol = (ZedGraphControl)histogramGrid;
             zcontrol.GraphPane.AddBar(item.name, item.steps.sizeNumber, item.steps.funcValue, item.color);
         }
         private void DrawCollectionOfHists(List<HistogramData> items)
         {
-            ZedGraphControl zcontrol = (ZedGraphControl)histogramGrid;
+            var zcontrol = (ZedGraphControl)histogramGrid;
             zcontrol.GraphPane.CurveList.Clear();
-            zcontrol.GraphPane.BarSettings.Type = BarType.SortedOverlay;
+            zcontrol.GraphPane.BarType = BarType.SortedOverlay;
             foreach (var h in items)
             {
                 DrawSingleBar(h);
             }
-            zcontrol.GraphPane.BarSettings.MinClusterGap = 0.0f;
+            zcontrol.GraphPane.MinClusterGap = 0.0f;
         }
         public void ClearAll()
         {
@@ -56,19 +58,19 @@ namespace UserControlsLibrary.PointTab.Histograms
         {
             if (component is ZedGraphControl)
                 histogramGrid = component;
-            ZedGraphControl zcontrol = (ZedGraphControl)histogramGrid;
-            zcontrol.GraphPane.XAxis.Title.Text = "Номер столбца";
-            zcontrol.GraphPane.YAxis.Title.Text = "Количество точек";
-            ((ZedGraphControl)histogramGrid).GraphPane.BarSettings.Type = BarType.SortedOverlay;
+            var zcontrol = (ZedGraphControl)histogramGrid;
+            zcontrol.GraphPane.XAxis.Title = "Номер столбца";
+            zcontrol.GraphPane.YAxis.Title = "Количество точек";
+            ((ZedGraphControl)histogramGrid).GraphPane.BarType = BarType.SortedOverlay;
         }
         public void SetTitle(OutputType outs)
         {
-            ((ZedGraphControl)histogramGrid).GraphPane.Title.Text = "Гистограмма " + outs.ToString();
+            ((ZedGraphControl)histogramGrid).GraphPane.Title = "Гистограмма " + outs.ToString();
         }
         public Bitmap DrawToBitmap()
         {
-            ZedGraphControl zcontrol = (ZedGraphControl)histogramGrid;
-            return new Bitmap(zcontrol.GraphPane.GetImage());
+            var zcontrol = (ZedGraphControl)histogramGrid;
+            return new Bitmap(zcontrol.GraphPane.Image);
         }
     }
 }

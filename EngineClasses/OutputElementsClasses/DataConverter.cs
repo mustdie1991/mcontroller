@@ -25,8 +25,8 @@ namespace EngineClasses.OutputElementsClasses
             for (var i = 0; i < dencity; i++)
             {
                 xVal[i] = i + 1;
-                yVal[i] = matrix.Cast<double>().Select(p => p).Where(p => p > Current_bound && p <= Current_bound + Lower_bound).Count();
-                interval[i] = string.Format("{0:0.000} - {1:0.000}", Current_bound, Current_bound + Lower_bound);
+                yVal[i] = matrix.Cast<double>().Select(p => p).Count(p => p > Current_bound && p <= Current_bound + Lower_bound);
+                interval[i] = $"{Current_bound:0.000} - {Current_bound + Lower_bound:0.000}";
                 Current_bound += Lower_bound;
             }
             return new HistogramSteps(xVal, yVal, interval);
